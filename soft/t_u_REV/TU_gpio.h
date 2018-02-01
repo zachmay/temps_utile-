@@ -3,6 +3,8 @@
 
 #include "TU_options.h"
 
+// @TODO: Figure this out
+#ifdef FLIP_180
 #define CV1 A3
 #define CV2 A6
 #define CV3 A5
@@ -10,6 +12,15 @@
 
 #define TR1 0
 #define TR2 1 // reset
+#else
+#define CV1 A3
+#define CV2 A6
+#define CV3 A5
+#define CV4 A4
+
+#define TR1 0
+#define TR2 1 // reset
+#endif
 
 // outputs, tact buttons:
 #ifdef _TEMPS_UTILE_REV_0
@@ -49,13 +60,23 @@
 #define OLED_CS_ACTIVE LOW
 #define OLED_CS_INACTIVE HIGH
 
-#define encR1 15
-#define encR2 16
-#define butR  13
+#ifdef FLIP_180
+  #define encR1 21
+  #define encR2 22
+  #define butR  23
 
-#define encL1 22
-#define encL2 21
-#define butL  23
+  #define encL1 16
+  #define encL2 15
+  #define butL  13
+#else
+  #define encR1 15
+  #define encR2 16
+  #define butR  13
+
+  #define encL1 22
+  #define encL2 21
+  #define butL  23
+#endif
 
 #define TU_GPIO_DEBUG_PIN1 30
 #define TU_GPIO_DEBUG_PIN2 29 // available on PCB

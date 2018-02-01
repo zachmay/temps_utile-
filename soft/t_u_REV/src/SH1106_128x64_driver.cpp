@@ -57,8 +57,15 @@ static uint8_t SH1106_init_seq[] = {
   0x08d, 0x014,   /* [2] charge pump setting (p62): 0x014 enable, 0x010 disable */
 
   0x020, 0x000,   /* 2012-05-27: page addressing mode */ // PLD: Seems to work in conjuction with lower 4 bits of column data?
+
+  #ifdef FLIP_180
+  0x0a0,          /* segment remap a0/a1*/
+  0x0c0,          /* c0: scan dir normal, c8: reverse */
+  #else
   0x0a1,        /* segment remap a0/a1*/
   0x0c8,        /* c0: scan dir normal, c8: reverse */
+  #endif
+
   0x0da, 0x012,   /* com pin HW config, sequential com pin config (bit 4), disable left/right remap (bit 5) */
   0x081, 0x0cf,   /* [2] set contrast control */
   0x0d9, 0x0f1,   /* [2] pre-charge period 0x022/f1*/

@@ -8,4 +8,6 @@
 /* ------------ uncomment if using a pre-rev 1 PCB ----------------------------  */
 //#define _TEMPS_UTILE_REV_0
 
+/* ------- Uncomment to flip screen, knobs, buttons 180 degrees ---------------- */
+// #define FLIP_18
 #endif
